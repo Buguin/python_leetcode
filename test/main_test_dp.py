@@ -35,8 +35,9 @@ class MyTestCase(unittest.TestCase):
         509. 斐波那契数
         :return: 
         """
-        input_num = 2
-        ans = Solution.fib(input_num)
+        input_num = 20
+        s = Solution()
+        ans = s.fib(input_num)
         print(ans)
         if ans == 0:
             self.assertEqual(True, False)
