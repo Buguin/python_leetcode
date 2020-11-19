@@ -3,6 +3,34 @@
 
 
 class Solution:
+    @staticmethod
+    def coinChange(coins: [int], amount: int) -> int:
+        """
+        动态规划，自顶向下
+        :param coins: 
+        :param amount: 
+        :return: 
+        """
+        memo = {}
+        def dp(n):
+            if n in memo.keys():
+                return memo[n]
+            # base case
+            if n == 0: return 0
+            if n < 0: return -1
+            res = float('INF')
+            for coin in coins:
+                subproblem = dp(n - coin)
+                if subproblem == -1: continue
+                res = min(res, 1 + subproblem)
+            if res != float('INF'):
+                memo[n] = res
+                return res
+            else:
+                memo[n] = -1
+                return -1
+
+        return dp(amount)
 
     def fib(self, N: int) -> int:
         """
@@ -44,7 +72,6 @@ class Solution:
             return self.cache_dict[N]
         self.cache_dict[N] = self.memoize(N - 1) + self.memoize(N - 2)
         return self.memoize(N)
-
 
     @staticmethod
     def fib1(N: int) -> int:

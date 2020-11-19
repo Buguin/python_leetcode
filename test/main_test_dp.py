@@ -44,6 +44,21 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_coinChange(self):
+        """
+        322. 零钱兑换
+        :return: 
+        """
+        coins = [1, 2, 5]
+        amount = 11
+        ans = Solution.coinChange(coins, amount)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
+
 
 if __name__ == '__main__':
     unittest.main()
