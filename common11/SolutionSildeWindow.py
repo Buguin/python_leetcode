@@ -3,6 +3,7 @@
 
 
 class Solution:
+
     @staticmethod
     def maxSlidingWindow(nums, k) -> [int]:
         class MyQueue:

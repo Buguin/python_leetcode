@@ -1,12 +1,13 @@
 import unittest
-from common11.Solution import Solution
+from common11.SolutionSildeWindow import Solution
 
 
 class MyTestCase(unittest.TestCase):
-    """
-    239. 滑动窗口最大值
-    """
+
     def test_maxSlidingWindow(self):
+        """
+        239. 滑动窗口最大值
+        """
         nums = [1,3,1,2,0,5]
         k = 3
         ans = Solution.maxSlidingWindow(nums, k)
