@@ -3,29 +3,48 @@
 
 
 class Solution:
-    memo = []
-    memo_index = []
 
     def fib(self, N: int) -> int:
         """
-        递归，带备忘录
+        递归，记忆化自底向上
         :param N: 
         :return: 
         """
-        if N in self.memo_index:
-            return self.memo[self.memo_index.index(N)]
-        if N == 0:
-            self.memo_index.append(0)
-            self.memo.append(0)
-            return 0
-        elif N == 1:
-            self.memo_index.append(1)
-            self.memo.append(1)
-            return 1
-        ans = self.fib(N - 1) + self.fib(N - 2)
-        self.memo_index.append(N)
-        self.memo.append(ans)
-        return ans
+        if (N <= 1):
+            return N
+
+        current = 0
+        prev1 = 0
+        prev2 = 1
+
+        # Since range is exclusive and we want to include N, we need to put N+1.
+        for i in range(2, N + 1):
+            current = prev1 + prev2
+            prev1 = prev2
+            prev2 = current
+        return current
+
+    def memoize(self, N: int) -> int:
+        if N in self.cache_dict.keys():
+            return self.cache_dict[N]
+        self.cache_dict[N] = self.memoize(N - 1) + self.memoize(N - 2)
+        return self.memoize(N)
+
+    def fib2(self, N: int) -> int:
+        """
+        递归，记忆化自顶向下
+        :param N: 
+        :return: 
+        """
+        self.cache_dict = {0: 0, 1: 1}
+        return self.memoize(N)
+
+    def memoize(self, N: int) -> int:
+        if N in self.cache_dict.keys():
+            return self.cache_dict[N]
+        self.cache_dict[N] = self.memoize(N - 1) + self.memoize(N - 2)
+        return self.memoize(N)
+
 
     @staticmethod
     def fib1(N: int) -> int:

@@ -35,7 +35,7 @@ class MyTestCase(unittest.TestCase):
         509. 斐波那契数
         :return: 
         """
-        input_num = 20
+        input_num = 3
         s = Solution()
         ans = s.fib(input_num)
         print(ans)
