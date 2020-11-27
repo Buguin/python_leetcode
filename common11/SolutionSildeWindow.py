@@ -34,24 +34,22 @@ class Solution:
         return m_ans
 
     @staticmethod
-    def maxSlidingWindow1(nums, k) -> [int]:
-        size = len(nums)
-        m_left = [0]*size
-        m_left[0] = nums[0]
-        m_right = [0]*size
-        m_right[-1] = nums[-1]
-        m_ans = []
-        for i in range(1, size):
-            if i % k == 0:
-                m_left[i] = nums[i]
-            else:
-                m_left[i] = max(m_left[i-1], nums[i])
-            j = size - i - 1
-            if (j + 1) % k == 0:
-                m_right[j] = nums[j]
-            else:
-                m_right[j] = max(m_right[j+1], nums[j])
-        for m in range(k, size + 1):
-            res = max(m_left[m - 1], m_right[m - k])
-            m_ans.append(res)
-        return m_ans
+    def fourSumCount( A:[int], B: [int], C: [int], D: [int]) -> int:
+        sum_a_b = {}
+        for a in A:
+            for b in B:
+                temp_sum = a + b
+                sum_a_b[temp_sum] = sum_a_b.get(temp_sum, 0) + 1
+                # if temp_sum not in sum_a_b.keys():
+                #     sum_a_b[temp_sum] = 1
+                # else:
+                #     sum_a_b[temp_sum] += 1
+        ans = 0
+        for c in C:
+            for d in D:
+                temp_sum = c + d
+                if -temp_sum in sum_a_b:
+                    ans += sum_a_b[-temp_sum]
+                # if -temp_sum in sum_a_b.keys():
+                #     ans += sum_a_b[-temp_sum]
+        return ans
