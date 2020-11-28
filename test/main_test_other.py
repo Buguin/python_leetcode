@@ -19,6 +19,20 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_reversePairs(self):
+        """
+        493. 翻转对
+        """
+        nums = [1,3,2,3,1]
+        # nums = [2, 4, 3, 5, 1]
+        nums = [5,4,3,2,1]
+        ans = Solution.reversePairs(nums)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
