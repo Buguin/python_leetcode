@@ -63,3 +63,26 @@ class Solution:
                     ans += 1
         return ans
 
+    @staticmethod
+    def maxRepeating(sequence: str, word: str) -> int:
+        # 暴力
+        size = len(sequence)
+        size_word = len(word)
+        ans = 0
+        while sequence:
+            temp_ans = 0
+            if word in sequence:
+                index_s = sequence.index(word)
+                sequence = sequence[index_s:]
+                for i in range(0, len(sequence), size_word):
+                    if sequence[i:i+size_word] == word:
+                        temp_ans += 1
+                        continue
+                    else:
+                        break
+                sequence = sequence[size_word*temp_ans:]
+            else:
+                break
+            ans = max(ans, temp_ans)
+        return ans
+

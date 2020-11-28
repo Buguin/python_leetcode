@@ -33,6 +33,19 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_maxRepeating(self):
+        """
+        5557. 最大重复子字符串
+        """
+        sequence = "ababc"
+        word = "ab"
+        ans = Solution.maxRepeating(sequence, word)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
