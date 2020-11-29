@@ -2,6 +2,19 @@
 # __author__ = 'Buguin'
 
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    # def __new__(cls, nums: []):
+    #     temp1 = ListNode()
+    #     for i in range(1,len(nums)):
+    #         temp2 = ListNode(nums[i])
+    #         temp1.next = temp2
+    #     return temp1
+
+
 class Solution:
 
     @staticmethod
@@ -64,6 +77,18 @@ class Solution:
         return ans
 
     @staticmethod
+    def creatLN(nums: [int]) -> ListNode:
+        # 暴力
+        ls = ListNode(nums[0])
+        temp = ListNode(nums[1])
+        ls.next = temp
+        for i in range(2,len(nums)):
+            temp_t = ListNode(nums[i])
+            temp.next = temp_t
+            temp = temp_t
+        return ls
+
+    @staticmethod
     def maxRepeating(sequence: str, word: str) -> int:
         # 暴力
         size = len(sequence)
@@ -86,3 +111,30 @@ class Solution:
             ans = max(ans, temp_ans)
         return ans
 
+    @staticmethod
+    def mergeInBetween(list1: ListNode, a: int, b: int, list2: ListNode) -> ListNode:
+        # 暴力
+        first = ListNode([0])
+        first.next = list1
+        first1 = list1
+        i = 0
+        while first.next is not None:
+            if i == a:
+                first.next = list2
+                break
+            first = first.next
+            first1 = first1.next
+            i += 1
+        j = i
+        while first1.next is not None:
+            first1 = first1.next
+            if j == b:
+                while True:
+                    if list2.next is not None:
+                        list2 = list2.next
+                    else:
+                        list2.next = first1
+                        break
+                break
+            j +=1
+        return list1

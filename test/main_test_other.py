@@ -1,5 +1,6 @@
 import unittest
 from common11.SolutionOther import Solution
+from common11.SolutionOther import ListNode
 
 
 class MyTestCase(unittest.TestCase):
@@ -45,6 +46,28 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(True, False)
         else:
             self.assertEqual(True, True)
+
+    def test_mergeInBetween(self):
+        """
+        5558. 合并两个链表
+        """
+        list1 = [0, 1, 2, 3, 4, 5, 6]
+        list2 = [1000000, 1000001, 1000002]
+        a = 3
+        b = 4
+        list1 = [0,1,2,3,4,5,6]
+        list2 = [1000000,1000001,1000002,1000003,1000004,1000005,1000006,1000007,1000008,1000009]
+        a = 2
+        b = 5
+        ls_list1 = Solution.creatLN(list1)
+        ls_list2 = Solution.creatLN(list2)
+        ans = Solution.mergeInBetween(ls_list1, a, b, ls_list2)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 
 if __name__ == '__main__':
