@@ -68,6 +68,17 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_largestPerimeter(self):
+        """
+        976. 三角形的最大周长
+        """
+        nums = [200,100,100,1,1]
+        ans = Solution.largestPerimeter(nums)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
 
 
 if __name__ == '__main__':

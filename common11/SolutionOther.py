@@ -138,3 +138,47 @@ class Solution:
                 break
             j +=1
         return list1
+
+    @staticmethod
+    def largestPerimeter(A: [int]) -> int:
+        # 暴力 两边之和大于另一边
+        A.sort(reverse=True)
+        for i in range(len(A)-2):
+            if A[i] < A[i+1]+A[i+2]:
+                return A[i]+A[i+1]+A[i+2]
+        return 0
+        # size = len(A)
+        # A.sort(reverse=True)
+        # ans = 0
+        # for i in range(size):
+        #     for j in range(i+1, size):
+        #         for k in range(j+1,size):
+        #             a = A[i]
+        #             b = A[j]
+        #             c = A[k]
+        #             if a + b > c and a + c > b and b + c > a:
+        #                 ans = a + b + c
+        #                 return ans
+        # return ans
+
+    @staticmethod
+    def largestPerimeter1(A: [int]) -> int:
+        # 合并两边？？？
+        size = len(A)
+        A.sort(reverse=True)
+        ans = 0
+        merge_bide = []
+        for i in range(size):
+            for j in range(i+1, size):
+                temp_list1 = A[i] + A[j]
+                temp_list2 = abs(A[i] - A[j])
+                merge_bide.append([temp_list1, temp_list2])
+        for n in range(size):
+            temp_merge_bide = merge_bide[size - 1:]
+
+            for m in range(len(merge_bide)):
+
+                if merge_bide[m][0] > A[n] > merge_bide[m][1]:
+                    ans = merge_bide[m][0] + A[n]
+                    return ans
+        return ans
