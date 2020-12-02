@@ -82,7 +82,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_removeKdigits(self):
         """
-        321. 拼接最大数
+        #402 移掉K位数字
         """
         nums = "10200"
         k = 1
