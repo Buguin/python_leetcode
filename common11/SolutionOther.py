@@ -182,3 +182,35 @@ class Solution:
                     ans = merge_bide[m][0] + A[n]
                     return ans
         return ans
+
+    @staticmethod
+    def maxNumber(nums1: [int], nums2: [int], k: int) -> [int]:
+        # 合并两边？？？
+        size_nums1 = len(nums1)
+        size_nums2 = len(nums2)
+        ans = []
+        # 比较两个数字的头
+
+        return ans
+
+    @staticmethod
+    def removeKdigits(num: str, k: int) -> str:
+        size = len(num)
+        num_int = []
+        remain = size - k
+        if remain <= 0:
+            return "0"
+        for n in num:
+            # while k and stack and stack[-1] > digit:
+            while k > 0 and num_int and num_int[-1] > n:
+                num_int.pop()
+                k -= 1
+            num_int.append(n)
+        # 去除左边的0
+        while num_int:
+            if num_int[0] == '0' and len(num_int) > 1:
+                num_int.pop(0)
+            else:
+                break
+        ans = ''.join(num_int[:remain])
+        return ans

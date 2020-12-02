@@ -77,3 +77,9 @@ class Solution:
             return [-1, -1]
         ans = bisect_find(nums, 0, len(nums) - 1)
         return ans
+
+    @staticmethod
+    def maxNumber(nums: [int], target: int) -> [int]:
+        # 二分法:判断到最小维度，即单个数字维度
+
+        return ans

@@ -80,6 +80,24 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_removeKdigits(self):
+        """
+        321. 拼接最大数
+        """
+        nums = "10200"
+        k = 1
+        nums = "10"
+        k = 2
+        nums = "1234567890"
+        k = 9
+
+        ans = Solution.removeKdigits(nums, k)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
