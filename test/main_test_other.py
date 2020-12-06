@@ -125,8 +125,8 @@ class MyTestCase(unittest.TestCase):
         118. 杨辉三角
         """
         k = 5
-        k = 0
-        k = 1
+        # k = 0
+        # k = 1
         ans = Solution.generate(k)
         print(ans)
         if ans == 0:

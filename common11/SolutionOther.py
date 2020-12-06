@@ -253,7 +253,7 @@ class Solution:
         return ans
 
     @staticmethod
-    def generate(numRows: int) -> [[int]]:
+    def generate1(numRows: int) -> [[int]]:
         # 数乘
         ans = []
         for i in range(1, numRows + 1):
@@ -264,5 +264,37 @@ class Solution:
             size = len(temp_list)
             for j in range(1, size - 1):
                 temp_list[j] = ans[i - 2][j - 1] + ans[i - 2][j]
+            ans.append(temp_list)
+        return ans
+
+    @staticmethod
+    def generate2(numRows: int) -> [[int]]:
+        # 数乘
+        if numRows == 0:
+            return []
+        ans = [[1]]
+        for i in range(2, numRows + 1):
+            temp_list = [1]*i
+            size = len(temp_list)
+            if size % 2 == 1:
+                range_s = size // 2 + 1
+            else:
+                range_s = size // 2
+            for j in range(1, range_s):
+                temp_list[j] = ans[i - 2][j - 1] + ans[i - 2][j]
+                temp_list[size - 1 - j] = ans[i - 2][j - 1] + ans[i - 2][j]
+            ans.append(temp_list)
+        return ans
+
+    @staticmethod
+    def generate(numRows: int) -> [[int]]:
+        # 数乘
+        if numRows == 0:
+            return []
+        ans = [[1]]
+        while len(ans) < numRows:
+            temp_list = []
+            for a, b in zip([0] + ans[-1], ans[-1] + [0]):
+                temp_list.append(a+b)
             ans.append(temp_list)
         return ans

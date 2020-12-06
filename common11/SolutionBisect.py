@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 # __author__ = 'Buguin'
+import bisect
 
 
 class Solution:
@@ -79,7 +80,40 @@ class Solution:
         return ans
 
     @staticmethod
-    def maxNumber(nums: [int], target: int) -> [int]:
-        # 二分法:判断到最小维度，即单个数字维度
+    def maxNumber(nums1: [int], nums2: [int], k: int) -> [int]:
 
+        def delete_m_max(nums, m) -> [int]:
+            size = len(nums)
+            remain = size - m
+            nums_r = []
+            for n in nums:
+                while nums_r and m and nums_r[-1] < n:
+                    nums_r.pop(-1)
+                    m -= 1
+                nums_r.append(n)
+            return nums_r[:remain]
+
+        def merge(ans1_m: [int], ans2_m: [int]) -> [int]:
+            ans_m = []
+            size_ans1 = len(ans1_m)
+            size_ans2 = len(ans2_m)
+            n = 0
+            m = 0
+            if ans1_m[n] > ans2_m[m]:
+                ans_m.append(ans1_m[n])
+                n += 1
+            else:
+                ans_m.append(ans2_m[m])
+                m += 1
+
+
+            return ans_m
+
+        ans = [0]
+        for i in range(k):
+            ans1 = delete_m_max(nums1, i)
+            ans2 = delete_m_max(nums2, k-i)
+            ans_t = merge(ans1, ans2)
+            if ans_t.__str__() >ans.__str__():
+                ans = ans_t
         return ans
