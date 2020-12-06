@@ -82,7 +82,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_removeKdigits(self):
         """
-        #402 移掉K位数字
+        402 移掉K位数字
         """
         nums = "10200"
         k = 1
@@ -90,8 +90,44 @@ class MyTestCase(unittest.TestCase):
         k = 2
         nums = "1234567890"
         k = 9
-
         ans = Solution.removeKdigits(nums, k)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
+    def test_countPrimes(self):
+        """
+        204. 计数质数
+        2  [4]
+        3  [4,6,9]
+        4  [4,6,9,8]
+        5  [4,6,9,8,10,25]
+        6  [4,6,9,8,10,25,12]
+        7  [4,6,9,8,10,25,12,14,49]
+        8  [4,6,9,8,10,25,12,14,49,16]
+        9  [4,6,9,8,10,25,12,14,49,16,18]
+        10 [4,6,9,8,10,25,12,14,49,16,18,20]
+        11 [4,6,9,8,10,25,12,14,49,16,18,20,121]
+        12 [4,6,9,8,10,25,12,14,49,16,18,20,121,24]
+        """
+        k = 100
+        ans = Solution.countPrimes(k)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
+    def test_generate(self):
+        """
+        118. 杨辉三角
+        """
+        k = 5
+        k = 0
+        k = 1
+        ans = Solution.generate(k)
         print(ans)
         if ans == 0:
             self.assertEqual(True, False)

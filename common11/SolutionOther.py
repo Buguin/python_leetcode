@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 # __author__ = 'Buguin'
 
+import bisect
+
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -213,4 +215,54 @@ class Solution:
             else:
                 break
         ans = ''.join(num_int[:remain])
+        return ans
+
+    @staticmethod
+    def countPrimes1(n: int) -> int:
+        # 暴力
+        if n <= 2:
+            return 0
+        ans = 1
+        prime_flag = True
+        temp_list = [2]
+        for i in range(3, n, 2):
+            for t in temp_list:
+                if i % t == 0:
+                    prime_flag = False
+                    break
+                prime_flag = True
+            if prime_flag:
+                ans += 1
+            temp_list.append(i)
+        return ans
+
+    @staticmethod
+    def countPrimes(n: int) -> int:
+        # 数乘
+        if n <= 2:
+            return 0
+        ans = 0
+        temp_list = []
+        for i in range(2, n):
+            if i not in temp_list:
+                ans += 1
+                bisect.insort_left(temp_list, i * 2)
+                bisect.insort_left(temp_list, i * i)
+            else:
+                bisect.insort_left(temp_list, i * 2)
+        return ans
+
+    @staticmethod
+    def generate(numRows: int) -> [[int]]:
+        # 数乘
+        ans = []
+        for i in range(1, numRows + 1):
+            if i == 1:
+                temp_list = [1]
+            else:
+                temp_list = [1]*i
+            size = len(temp_list)
+            for j in range(1, size - 1):
+                temp_list[j] = ans[i - 2][j - 1] + ans[i - 2][j]
+            ans.append(temp_list)
         return ans
