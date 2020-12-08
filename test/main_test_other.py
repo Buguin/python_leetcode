@@ -4,7 +4,6 @@ from common11.SolutionOther import ListNode
 
 
 class MyTestCase(unittest.TestCase):
-
     def test_fourSumCount(self):
         """
         454. 四数相加 II
@@ -13,7 +12,7 @@ class MyTestCase(unittest.TestCase):
         B = [-2, -1]
         C = [-1, 2]
         D = [0, 2]
-        ans = Solution.fourSumCount(A,B,C,D)
+        ans = Solution.fourSumCount(A, B, C, D)
         print(ans)
         if ans == 0:
             self.assertEqual(True, False)
@@ -24,9 +23,9 @@ class MyTestCase(unittest.TestCase):
         """
         493. 翻转对
         """
-        nums = [1,3,2,3,1]
+        nums = [1, 3, 2, 3, 1]
         # nums = [2, 4, 3, 5, 1]
-        nums = [5,4,3,2,1]
+        nums = [5, 4, 3, 2, 1]
         ans = Solution.reversePairs(nums)
         print(ans)
         if ans == 0:
@@ -55,8 +54,8 @@ class MyTestCase(unittest.TestCase):
         list2 = [1000000, 1000001, 1000002]
         a = 3
         b = 4
-        list1 = [0,1,2,3,4,5,6]
-        list2 = [1000000,1000001,1000002,1000003,1000004,1000005,1000006,1000007,1000008,1000009]
+        list1 = [0, 1, 2, 3, 4, 5, 6]
+        list2 = [1000000, 1000001, 1000002, 1000003, 1000004, 1000005, 1000006, 1000007, 1000008, 1000009]
         a = 2
         b = 5
         ls_list1 = Solution.creatLN(list1)
@@ -72,7 +71,7 @@ class MyTestCase(unittest.TestCase):
         """
         976. 三角形的最大周长
         """
-        nums = [200,100,100,1,1]
+        nums = [200, 100, 100, 1, 1]
         ans = Solution.largestPerimeter(nums)
         print(ans)
         if ans == 0:
@@ -128,6 +127,23 @@ class MyTestCase(unittest.TestCase):
         # k = 0
         # k = 1
         ans = Solution.generate(k)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
+    def test_matrixScore(self):
+        """
+        861. 翻转矩阵后的得分
+        """
+        A = [[0, 0, 1, 1],
+             [1, 0, 1, 0],
+             [1, 1, 0, 0]]
+        A = [[1, 1, 1, 1],
+             [1, 0, 0, 1],
+             [1, 1, 1, 1]]
+        ans = Solution.matrixScore(A)
         print(ans)
         if ans == 0:
             self.assertEqual(True, False)
