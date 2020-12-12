@@ -150,6 +150,19 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_uniquePaths(self):
+        """
+        62. 不同路径
+        """
+        m = 3
+        n = 2
+        ans = Solution.uniquePaths(m, n)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

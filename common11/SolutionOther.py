@@ -311,3 +311,21 @@ class Solution:
             res += max(s, n - s)
         return res
 
+    @staticmethod
+    def uniquePaths1(m: int, n: int) -> int:
+        sub = n + m - 2
+        res = 1
+        for i in range(1, m):
+            res = res * (sub - (m - 1) + i) // i
+        return res
+
+    @staticmethod
+    def uniquePaths(m: int, n: int) -> int:
+        f = [[1] * n] + [[1] + [0] * (n - 1) for _ in range(m - 1)]
+        print(f)
+        for i in range(1, m):
+            for j in range(1, n):
+                f[i][j] = f[i - 1][j] + f[i][j - 1]
+        print(f)
+        return f[m - 1][n - 1]
+
