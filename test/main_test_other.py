@@ -163,6 +163,15 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_containsDuplicate(self):
+        """
+        217. 存在重复元素
+        """
+        nums = [1,2,3,1]
+        ans = Solution.containsDuplicate(nums)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

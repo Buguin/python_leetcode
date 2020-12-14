@@ -2,6 +2,7 @@
 # __author__ = 'Buguin'
 
 import bisect
+import collections
 
 
 class ListNode:
@@ -329,3 +330,22 @@ class Solution:
         print(f)
         return f[m - 1][n - 1]
 
+    @staticmethod
+    def containsDuplicate1(nums: [int]) -> bool:
+        size = len(nums)
+        nums_temp = collections.Counter(nums)
+        size_diff = len(nums_temp.keys())
+        if size == size_diff:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def containsDuplicate(nums: [int]) -> bool:
+        nums_temp = {}
+        for num in nums:
+            if num in nums_temp.keys():
+                return True
+            else:
+                nums_temp[num] = 1
+        return False
