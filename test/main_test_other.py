@@ -172,6 +172,15 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_groupAnagrams(self):
+        """
+        49. 字母异位词分组
+        """
+        strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+        ans = Solution.groupAnagrams(strs)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

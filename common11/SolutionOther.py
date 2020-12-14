@@ -349,3 +349,18 @@ class Solution:
             else:
                 nums_temp[num] = 1
         return False
+
+    @staticmethod
+    def groupAnagrams(strs: [str]) -> [[str]]:
+        strs_temp = {}
+        for str in strs:
+            str_list = list(str)
+            str_list.sort()
+            str_temp = ''.join(str_list)
+            if str_temp in strs_temp.keys():
+                strs_temp[str_temp].append(str)
+            else:
+                strs_temp[str_temp] = [str]
+        ans = list(strs_temp.values())
+        # print(ans)
+        return ans
