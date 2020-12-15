@@ -181,6 +181,16 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_leastInterval(self):
+        """
+        621. 任务调度器
+        """
+        tasks = ["A", "A", "A", "B", "B", "B"]
+        n = 2
+        ans = Solution.leastInterval(tasks, n)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
