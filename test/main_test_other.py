@@ -191,6 +191,16 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_monotoneIncreasingDigits(self):
+        """
+        738. 单调递增的数字
+        """
+        N = 10
+        N = 1234
+        N = 332
+        ans = Solution.monotoneIncreasingDigits(N)
+        print(ans)
+        self.assertEqual(True, True)
 
 if __name__ == '__main__':
     unittest.main()
