@@ -400,3 +400,26 @@ class Solution:
                 ones //= 10
             result += ones
         return result
+
+    @staticmethod
+    def wordPattern(pattern: str, s: str) -> bool:
+        s_list = s.split(" ")
+        if len(s_list) != len(pattern):
+            return False
+        patterns = []
+        strs = []
+        for i in range(len(s_list)):
+            if not patterns or (pattern[i] not in patterns and s_list[i] not in strs):
+                patterns.append(pattern[i])
+                strs.append(s_list[i])
+                continue
+            else:
+                if pattern[i] in patterns:
+                    index = patterns.index(pattern[i])
+                    if strs[index] != s_list[i]:
+                        return False
+                else:
+                    index = strs.index(s_list[i])
+                    if patterns[index] != pattern[i]:
+                        return False
+        return True

@@ -202,5 +202,24 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_wordPattern(self):
+        """
+        290. 单词规律
+        """
+        pattern = "abba"
+        str = "dog cat cat dog"
+        # pattern = "abba"
+        # str = "dog dog dog dog"
+        # pattern = "abba"
+        # str = "dog cat cat fish"
+        # pattern = "aba"
+        # str = "dog cat cat"
+        pattern = "aaa"
+        str = "aa aa aa aa"
+        ans = Solution.wordPattern(pattern, str)
+        print(ans)
+        self.assertEqual(True, True)
+
+
 if __name__ == '__main__':
     unittest.main()
