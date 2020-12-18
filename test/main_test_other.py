@@ -220,6 +220,22 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_findTheDifference(self):
+        """
+        389. 找不同
+        """
+        s = "abcd"
+        t = "abcde"
+        s = ""
+        t = "y"
+        s = "a"
+        t = "aa"
+        s = "ae"
+        t = "aea"
+        ans = Solution.findTheDifference(s, t)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

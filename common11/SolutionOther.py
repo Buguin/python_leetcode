@@ -423,3 +423,42 @@ class Solution:
                     if patterns[index] != pattern[i]:
                         return False
         return True
+
+    @staticmethod
+    def findTheDifference1(s: str, t: str) -> str:
+        s_map = collections.Counter(s)
+        t_map = collections.Counter(t)
+        if len(s) > len(t):
+            for key, value in s_map.items():
+                if key in t_map.keys():
+                    if t_map[key] > s_map[key]:
+                        return key
+                else:
+                    return key
+        else:
+            for key, value in t_map.items():
+                if key in s_map.keys():
+                    if t_map[key] > s_map[key]:
+                        return key
+                else:
+                    return key
+
+    @staticmethod
+    def findTheDifference2(s: str, t: str) -> str:
+        max_num = 0
+        for s_t in s:
+            max_num += ord(s_t)
+        for t_t in t:
+            max_num -= ord(t_t)
+        str_c = chr(abs(max_num))
+        return str_c
+
+    @staticmethod
+    def findTheDifference(s: str, t: str) -> str:
+        max_num = 0
+        for s_t in s:
+            max_num ^= ord(s_t)
+        for t_t in t:
+            max_num ^= ord(t_t)
+        str_c = chr(max_num)
+        return str_c
