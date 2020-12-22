@@ -1,6 +1,5 @@
 import unittest
 from common11.SolutionOther import Solution
-from common11.SolutionOther import ListNode
 
 
 class MyTestCase(unittest.TestCase):

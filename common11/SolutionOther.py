@@ -1,21 +1,9 @@
 # -*- coding:utf-8 -*-
 # __author__ = 'Buguin'
 
+from common11.Common import ListNode
 import bisect
 import collections
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-    # def __new__(cls, nums: []):
-    #     temp1 = ListNode()
-    #     for i in range(1,len(nums)):
-    #         temp2 = ListNode(nums[i])
-    #         temp1.next = temp2
-    #     return temp1
 
 
 class Solution:
