@@ -237,7 +237,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_removeDuplicateLetters(self):
         """
-        389. 找不同
+        316. 去除重复字母
         """
         s = "bcabc"
         # s = "cbacdcbc"
