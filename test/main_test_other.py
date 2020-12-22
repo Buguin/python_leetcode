@@ -236,6 +236,16 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_removeDuplicateLetters(self):
+        """
+        389. 找不同
+        """
+        s = "bcabc"
+        # s = "cbacdcbc"
+        ans = Solution.removeDuplicateLetters(s)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

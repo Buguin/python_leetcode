@@ -462,3 +462,32 @@ class Solution:
             max_num ^= ord(t_t)
         str_c = chr(max_num)
         return str_c
+
+    @staticmethod
+    def removeDuplicateLetters1(s: str) -> str:
+        stack = []
+        seen = set()
+        remain_counter = collections.Counter(s)
+
+        for c in s:
+            if c not in seen:
+                while stack and c < stack[-1] and remain_counter[stack[-1]] > 0:
+                    seen.discard(stack.pop())
+                seen.add(c)
+                stack.append(c)
+            remain_counter[c] -= 1
+        return ''.join(stack)
+
+    @staticmethod
+    def removeDuplicateLetters(s: str) -> str:
+        stack = []
+        # seen = set()
+        remain_counter = collections.Counter(s)
+
+        for c in s:
+            if c not in stack:
+                while stack and c < stack[-1] and remain_counter[stack[-1]] > 0:
+                    stack.pop()
+                stack.append(c)
+            remain_counter[c] -= 1
+        return ''.join(stack)
