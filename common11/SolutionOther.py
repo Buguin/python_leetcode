@@ -489,3 +489,72 @@ class Solution:
                 index = s_list.index(key)
                 return index
         return -1
+
+    @staticmethod
+    def candy1(ratings: [int]) -> int:
+        # 暴力
+        size = len(ratings)
+        if size == 0: return 0
+        ans = []
+        temp_ratings = []
+        for i in range(size):
+            rating = ratings[i]
+            temp_ratings.append(rating)
+            if not ans:
+                ans.append(1)
+                continue
+            if temp_ratings[-2] < temp_ratings[-1]:
+                ans.append(ans[-1] + 1)
+            elif temp_ratings[-2] == temp_ratings[-1]:
+                ans.append(1)
+            else:
+                ans.append(1)
+                for j in range(len(temp_ratings) - 1,0, -1):
+                    if temp_ratings[j] < temp_ratings[j - 1] and ans[j] >= ans[j - 1]:
+                        ans[j - 1] += 1
+                    else:
+                        break
+        return sum(ans)
+
+    @staticmethod
+    def candy2(ratings: [int]) -> int:
+        size = len(ratings)
+        if size == 0: return 0
+        ans = []
+        for i in range(size):
+            if not ans:
+                ans.append(1)
+                continue
+            if ratings[i - 1] < ratings[i]:
+                ans.append(ans[-1] + 1)
+            else:
+                ans.append(1)
+        ratings.reverse()
+        ans.reverse()
+        for i in range(size - 1):
+            if ratings[i] < ratings[i + 1] and ans[i] >= ans[i + 1]:
+                ans[i + 1] = ans[i] + 1
+        ans.reverse()
+        return sum(ans)
+
+    @staticmethod
+    def candy(ratings: [int]) -> int:
+        size = len(ratings)
+        if size == 0: return 0
+        ans = []
+        for i in range(size):
+            rating = ratings[i]
+            if not ans:
+                ans.append(1)
+                continue
+            if ratings[i - 1] < ratings[i]:
+                ans.append(ans[-1] + 1)
+            else:
+                ans.append(1)
+        ratings.reverse()
+        ans.reverse()
+        for i in range(size - 1):
+            if ratings[i] < ratings[i + 1] and ans[i] >= ans[i + 1]:
+                ans[i + 1] = ans[i] + 1
+        ans.reverse()
+        return sum(ans)
