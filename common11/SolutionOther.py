@@ -539,22 +539,21 @@ class Solution:
 
     @staticmethod
     def candy(ratings: [int]) -> int:
-        size = len(ratings)
-        if size == 0: return 0
-        ans = []
-        for i in range(size):
-            rating = ratings[i]
-            if not ans:
-                ans.append(1)
-                continue
-            if ratings[i - 1] < ratings[i]:
-                ans.append(ans[-1] + 1)
+        n = len(ratings)
+        ret = 1
+        inc, dec, pre = 1, 0, 1
+
+        for i in range(1, n):
+            if ratings[i] >= ratings[i - 1]:
+                dec = 0
+                pre = (1 if ratings[i] == ratings[i - 1] else pre + 1)
+                ret += pre
+                inc = pre
             else:
-                ans.append(1)
-        ratings.reverse()
-        ans.reverse()
-        for i in range(size - 1):
-            if ratings[i] < ratings[i + 1] and ans[i] >= ans[i + 1]:
-                ans[i + 1] = ans[i] + 1
-        ans.reverse()
-        return sum(ans)
+                dec += 1
+                if dec == inc:
+                    dec += 1
+                ret += dec
+                pre = 1
+
+        return ret

@@ -255,6 +255,24 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_candy(self):
+        """
+        135. 分发糖果
+        """
+        ratings = [1,0,2]
+        ratings = [1,2,2]
+        ratings = [1,2,3,4,5]
+        # ratings = []
+        # 7
+        ratings = [1,3,2,2,1]
+        # 13
+        ratings = [1,2,87,87,87,2,1]
+        # 11
+        # ratings = [1,3,4,5,2]
+        ans = Solution.candy(ratings)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
