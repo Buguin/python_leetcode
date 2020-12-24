@@ -245,6 +245,16 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_firstUniqChar(self):
+        """
+        #387 字符串中的第一个唯一字符
+        """
+        s = "loveleetcode"
+        # s = "cbacdcbc"
+        ans = Solution.firstUniqChar(s)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

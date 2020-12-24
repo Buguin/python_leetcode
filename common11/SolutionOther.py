@@ -479,3 +479,13 @@ class Solution:
                 stack.append(c)
             remain_counter[c] -= 1
         return ''.join(stack)
+
+    @staticmethod
+    def firstUniqChar(s: str) -> int:
+        s_list = list(s)
+        remain_counter = collections.Counter(s_list)
+        for (key, value) in remain_counter.items():
+            if value == 1:
+                index = s_list.index(key)
+                return index
+        return -1
