@@ -48,3 +48,19 @@ class Solution:
                     matrix_list[j] = 0
             ans = max(ans, maximalList(matrix_list))
         return ans
+
+    @staticmethod
+    def largestRectangleArea(heights: [int]) -> int:
+        size = len(heights)
+        ans = 0
+        if size == 0: return ans
+        heights = [0] + heights + [0]
+        size += 2
+        mono_stack = []
+        for i in range(size):
+            while mono_stack and heights[mono_stack[-1]] > heights[i]:
+                height = heights[mono_stack.pop(-1)]
+                weight = i - mono_stack[-1] - 1
+                ans = max(ans, height*weight)
+            mono_stack.append(i)
+        return ans

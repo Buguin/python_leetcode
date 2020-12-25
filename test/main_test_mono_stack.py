@@ -34,6 +34,19 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_largestRectangleArea(self):
+        """
+        84. 柱状图中最大的矩形
+        """
+        # nums = [1,7,4,9,2,5]
+        heights = [2,1,0,6,2,3]
+        ans = Solution.largestRectangleArea(heights)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
