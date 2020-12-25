@@ -594,13 +594,20 @@ class Solution:
         return count
 
     @staticmethod
-    def findContentChildren(g: [int], s: [int]) -> int:
-        g.sort()
-        s.sort()
-        n, m = len(g), len(s)
-        i = j = 0
-        while i < n and j < m:
-            if g[i] <= s[j]:
-                i += 1
-            j += 1
-        return i
+    def rotate(matrix: [[int]]) -> None:
+        size_c = len(matrix[0]) - 1
+        size_r = len(matrix)
+        j_index = len(matrix[0])
+        for i in range(size_r//2):
+            j_index -= 1
+            for j in range(i, j_index):
+                temp1 = matrix[i][j]
+                temp2 = matrix[j][size_c - i]
+                temp3 = matrix[size_c - i][size_c - j]
+                temp4 = matrix[size_c - j][i]
+                matrix[i][j] = temp4
+                matrix[j][size_c - i] = temp1
+                matrix[size_c - i][size_c - j] = temp2
+                matrix[size_c - j][i] = temp3
+        # print(matrix)
+        # return temp_max

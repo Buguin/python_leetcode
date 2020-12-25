@@ -287,6 +287,29 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_rotate(self):
+        """
+        48. 旋转图像
+        """
+        matrix =[
+            [5, 1, 9, 11],
+            [2, 4, 8, 10],
+            [13, 3, 6, 7],
+            [15, 14, 12, 16]]
+        matrix =[
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]]
+        # matrix =[
+        #     [1, 2, 3, 4, 5],
+        #     [6, 7, 8, 9, 10],
+        #     [11, 12, 13, 14, 15],
+        #     [16, 17, 18, 19, 20],
+        #     [21, 22, 23, 24, 25]]
+        ans = Solution.rotate(matrix)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
