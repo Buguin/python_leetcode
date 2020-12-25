@@ -58,7 +58,19 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
-
+    def test_maxProfit(self):
+        """
+        714. 买卖股票的最佳时机含手续费
+        """
+        # nums = [1,7,4,9,2,5]
+        prices = [1, 3, 2, 8, 4, 9]
+        fee = 2
+        ans = Solution.maxProfit(prices, fee)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
 
 if __name__ == '__main__':
     unittest.main()
