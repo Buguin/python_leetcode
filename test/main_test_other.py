@@ -273,6 +273,20 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_findContentChildren(self):
+        """
+        135. 分发糖果
+        """
+        g = [1, 2, 3]
+        s = [1, 1]
+        # g = [1, 2]
+        # s = [1, 2, 3]
+        # g = [1, 2, 3]
+        # s = [3]
+        ans = Solution.findContentChildren(g, s)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

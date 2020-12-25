@@ -557,3 +557,50 @@ class Solution:
                 pre = 1
 
         return ret
+
+    @staticmethod
+    def findContentChildren1(g: [int], s: [int]) -> int:
+        g.sort()
+        s.sort()
+        num = 0
+        while g:
+            g_s = g.pop(0)
+            if s:
+                bi_index = bisect.bisect_left(s, g_s)
+                if len(s) != bi_index:
+                    s.pop(bi_index)
+                    num += 1
+                else:
+                    break
+            else:
+                return num
+        return num
+
+    @staticmethod
+    def findContentChildren2(g: [int], s: [int]) -> int:
+        g.sort()
+        s.sort()
+        n, m = len(g), len(s)
+        i = j = count = 0
+
+        while i < n and j < m:
+            while j < m and g[i] > s[j]:
+                j += 1
+            if j < m:
+                count += 1
+            i += 1
+            j += 1
+
+        return count
+
+    @staticmethod
+    def findContentChildren(g: [int], s: [int]) -> int:
+        g.sort()
+        s.sort()
+        n, m = len(g), len(s)
+        i = j = 0
+        while i < n and j < m:
+            if g[i] <= s[j]:
+                i += 1
+            j += 1
+        return i
