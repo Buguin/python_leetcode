@@ -310,6 +310,22 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_isIsomorphic(self):
+        """
+        205. 同构字符串
+        """
+        s = "egg"
+        t = "add"
+        s = "foo"
+        t = "bar"
+        s = "paper"
+        t = "title"
+        s = "ab"
+        t = "aa"
+        ans = Solution.isIsomorphic(s, t)
+        print(ans)
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

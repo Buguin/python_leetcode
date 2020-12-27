@@ -611,3 +611,19 @@ class Solution:
                 matrix[size_c - j][i] = temp3
         # print(matrix)
         # return temp_max
+
+    @staticmethod
+    def isIsomorphic(s: str, t: str) -> bool:
+        size_s = len(s)
+        size_t = len(t)
+        if size_s != size_t: return False
+        s_t_key = {}
+        t_s_key = {}
+        for s_char, t_char in zip(s,t):
+            if s_char not in s_t_key.keys():
+                s_t_key[s_char] = t_char
+            if t_char not in t_s_key.keys():
+                t_s_key[t_char] = s_char
+            if s_t_key[s_char] != t_char or t_s_key[t_char] != s_char:
+                return False
+        return True
