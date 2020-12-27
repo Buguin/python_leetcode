@@ -613,7 +613,7 @@ class Solution:
         # return temp_max
 
     @staticmethod
-    def isIsomorphic(s: str, t: str) -> bool:
+    def isIsomorphic1(s: str, t: str) -> bool:
         size_s = len(s)
         size_t = len(t)
         if size_s != size_t: return False
@@ -627,3 +627,22 @@ class Solution:
             if s_t_key[s_char] != t_char or t_s_key[t_char] != s_char:
                 return False
         return True
+
+    @staticmethod
+    def isIsomorphic2(s: str, t: str) -> bool:
+        size_s = len(s)
+        size_t = len(t)
+        if size_s != size_t: return False
+        for i in range(size_t):
+            if s.index(s[i]) != t.index(t[i]):
+                return False
+        return True
+
+    @staticmethod
+    def isIsomorphic(s: str, t: str) -> bool:
+        s_c = collections.Counter(list(s))
+        t_c = collections.Counter(list(t))
+        if len(s_c.keys()) != len(t_c.keys()):
+            return False
+        else:
+            return True
