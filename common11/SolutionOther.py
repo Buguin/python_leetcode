@@ -559,7 +559,7 @@ class Solution:
         return ret
 
     @staticmethod
-    def findContentChildren1(g: [int], s: [int]) -> int:
+    def findContentChildren(g: [int], s: [int]) -> int:
         g.sort()
         s.sort()
         num = 0
@@ -646,3 +646,23 @@ class Solution:
             return False
         else:
             return True
+
+    @staticmethod
+    def minDistance(houses: [int], k: int) -> int:
+        houses.sort()
+        size = len(houses)
+        if size == k :return 0
+        cost_a = [[0]*size for _ in range(size)]
+        for l in range(size-2,-1,-1):
+            for r in range(l+ 1, size):
+                cost_a[l][r] = houses[r] - houses[l] + cost_a[l+1][r-1]
+        print(cost_a)
+        ans_a = [[0] * (k+1) for _ in range(size + 1)]
+        for i in range(1,size + 1):
+            ans_a[i][1] = cost_a[0][i-1]
+        for m in range(2,k+1):
+            for n in range(m + 1, size + 1):
+                ans_a[n][m] = float('inf')
+                for p in range(m-1,n):
+                    ans_a[n][m] = min(ans_a[n][m], ans_a[p][m-1] + cost_a[p+1-1][n-1])
+        return ans_a[size][k]

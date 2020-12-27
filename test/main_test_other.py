@@ -275,7 +275,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_findContentChildren(self):
         """
-        135. 分发糖果
+        455. 分发饼干
         """
         g = [1, 2, 3]
         s = [1, 1]
@@ -323,6 +323,18 @@ class MyTestCase(unittest.TestCase):
         s = "ab"
         t = "aa"
         ans = Solution.isIsomorphic(s, t)
+        print(ans)
+        self.assertEqual(True, True)
+
+    def test_minDistance(self):
+        """
+        1478. 安排邮筒
+        """
+        houses = [1, 4, 8, 10, 20]
+        k = 3
+        houses = [7,4,6,1]
+        k = 1
+        ans = Solution.minDistance(houses, k)
         print(ans)
         self.assertEqual(True, True)
 
