@@ -72,5 +72,20 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_maxProfit188(self):
+        """
+        #188 买卖股票的最佳时机 IV
+        """
+        k = 2
+        prices = [2, 4, 1]
+        k = 2
+        prices = [6,1,3,2,4,7]
+        ans = Solution.maxProfit188(k, prices)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 if __name__ == '__main__':
     unittest.main()

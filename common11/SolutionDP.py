@@ -112,3 +112,38 @@ class Solution:
             dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)
             dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])
         return dp[n - 1][0]
+
+    @staticmethod
+    def maxProfit1881(k: int, prices: [int]) -> int:
+        if len(prices) <=1: return 0
+        size_p = len(prices)
+        profit = [[0]*2 for _ in range(size_p)]
+        profit[0] = [-prices[0], 0]
+        for i in range(1, size_p):
+            profit[i][0] = max(profit[i - 1][0], profit[i - 1][1] - prices[i])
+            profit[i][1] = max(profit[i - 1][1], profit[i - 1][0] + prices[i])
+        # 获取差价
+        temp_stack = []
+        for m in range(1, size_p):
+            if profit[m][1] > profit[m - 1][1]:
+                temp_stack.append(profit[m][1] - profit[m-1][1])
+        temp_stack.sort()
+        ans = 0
+        for n in range(min(k,len(temp_stack))):
+            ans += temp_stack[n]
+        return ans
+
+    @staticmethod
+    def maxProfit188(k: int, prices: [int]) -> int:
+        if len(prices) <=1: return 0
+        size_p = len(prices)
+        sell = [[0]*k for _ in range(size_p)]
+        buy = [[0] * k for _ in range(size_p)]
+        buy[0][0] = -prices[0]
+        sell[0][0] = 0
+        for j in range(k):
+            for i in range(j + 1, size_p):
+                buy[i][j] = max(buy[i-1][j], sell[i-1][j] - prices[i])
+                sell[i][j] = max(sell[i-1][j], buy[i-1][j-1]+ prices[i])
+
+        return ans
