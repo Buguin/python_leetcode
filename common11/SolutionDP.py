@@ -145,5 +145,6 @@ class Solution:
             for i in range(j + 1, size_p):
                 buy[i][j] = max(buy[i-1][j], sell[i-1][j] - prices[i])
                 sell[i][j] = max(sell[i-1][j], buy[i-1][j-1]+ prices[i])
+        return 0
 
-        return ans
+

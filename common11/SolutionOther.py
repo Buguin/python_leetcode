@@ -666,3 +666,46 @@ class Solution:
                 for p in range(m-1,n):
                     ans_a[n][m] = min(ans_a[n][m], ans_a[p][m-1] + cost_a[p+1-1][n-1])
         return ans_a[size][k]
+
+    @staticmethod
+    def minPatches1(nums: [int], n: int) -> int:
+        ans = 0
+        if len(nums) == 0:
+            nums.append(1)
+            ans += 1
+
+        def find_num(f_nums: [int], num: int) -> int:
+            temp = num
+            if temp in f_nums:
+                return 0
+            f_index = []
+            while temp and 0 not in f_index:
+                index = min(bisect.bisect_right(f_nums, temp)-1, len(f_nums) - 1)
+                if index in f_index:
+                    index -= 1
+                f_index.append(index)
+                temp -= f_nums[index]
+            if 0 not in f_index or temp == 0:
+                return 0
+            else:
+                return num
+        for i in range(1, n+1):
+            temp_num = find_num(nums, i)
+            if temp_num:
+                ans += 1
+                bisect.insort_left(nums, temp_num)
+        return ans
+
+    @staticmethod
+    def minPatches(nums: [int], n: int) -> int:
+        furthest = i = ans = 0
+        while furthest < n:
+            # 可覆盖到，直接用前缀和更新区间
+            if i < len(nums) and nums[i] <= furthest + 1:
+                furthest += nums[i] #  [1, furthest] -> [1, furthest + nums[i]]
+                i += 1
+            else:
+                # 不可覆盖到，增加一个数 furthest + 1，并用前缀和更新区间
+                furthest = 2 * furthest + 1 # [1, furthest] -> [1, furthest + furthest + 1]
+                ans += 1
+        return ans

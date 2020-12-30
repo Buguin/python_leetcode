@@ -338,6 +338,23 @@ class MyTestCase(unittest.TestCase):
         print(ans)
         self.assertEqual(True, True)
 
+    def test_minPatches(self):
+        """
+        330. 按要求补齐数组
+        """
+        nums = [1, 3]
+        n = 6
+        nums = [1,5,10]
+        n = 20
+        nums = []
+        n = 7
+        ans = Solution.minPatches(nums, n)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
