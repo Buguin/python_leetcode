@@ -355,6 +355,18 @@ class MyTestCase(unittest.TestCase):
         else:
             self.assertEqual(True, True)
 
+    def test_lastStoneWeight(self):
+        """
+        1046. 最后一块石头的重量
+        """
+        stones = [2, 7, 4, 1, 8, 1]
+        ans = Solution.lastStoneWeight(stones)
+        print(ans)
+        if ans == 0:
+            self.assertEqual(True, False)
+        else:
+            self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()

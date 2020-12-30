@@ -709,3 +709,17 @@ class Solution:
                 furthest = 2 * furthest + 1 # [1, furthest] -> [1, furthest + furthest + 1]
                 ans += 1
         return ans
+
+    @staticmethod
+    def lastStoneWeight(stones: [int]) -> int:
+        stones.sort()
+        while len(stones) > 1:
+            temp1 = stones.pop(-1)
+            temp2 = stones.pop(-1)
+            if temp1 != temp2:
+                temp = temp1 - temp2
+                bisect.insort_left(stones, temp)
+        if len(stones) == 1:
+            return stones[0]
+        else:
+            return 0
